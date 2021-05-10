@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
+@section('title')
+    Головна
+@endsection
+
+@section('body-style')
+    main-layout
+@endsection
 
 @section('body-content')
-    <body class="main-layout">
-    <!-- loader  -->
-    <div class="loader_bg">
-        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
-    </div>
-    <!-- end loader -->
 
-    <section >
+    <section>
         <div id="main_slider" class="section carousel slide banner-main" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#main_slider" data-slide-to="0" class="active"></li>
@@ -203,10 +204,5 @@
     </div>
 
     <!-- end Contact Us-->
-    <!-- footer start-->
-    <div id="plant" class="footer layout_padding">
-        <div class="container">
-            <p>© 2021 Всі права захищено.</p>
-        </div>
-    </div>
+
 @endsection

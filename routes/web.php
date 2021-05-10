@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\RouteController::class, 'home'])->name('home');
 Route::get('/items', [\App\Http\Controllers\RouteController::class, 'catalog'])->name('catalog');
+Route::get('/admin', [\App\Http\Controllers\RouteController::class, 'admin'])->middleware('admin')->name('admin');
 Auth::routes();
 

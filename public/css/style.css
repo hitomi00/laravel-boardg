@@ -1656,8 +1656,8 @@ font-weight: normal;
 .clothes_main{
      width: 100%;
      float: left;
-     background-color: #081b30;
      height: auto;
+     background-color: #081b30;
      padding: 60px 0px;
 
 }
@@ -2107,7 +2107,6 @@ ul.location_icon span {
 .sport_product {
     padding: 40px 20px;
     background: #fff;
-    text-align: center;
 
 }
 .sport_product:hover{
@@ -2589,10 +2588,6 @@ text-align: center;
 .footer p {color: #fff;}
 .footer p a {color: #fff;}
 .footer p a:hover {color: #fff;}
-
-
-
-.product_pagr .clothes_main {margin-bottom: 90px;}
 
 
 .main-menu ul > li a {padding-top: 5px;}

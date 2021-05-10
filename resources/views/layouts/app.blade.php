@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Sock</title>
+    <title>@yield('title')</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- owl stylesheets -->
     <link rel="stylesheet" href="{{ asset("/css/owl.carousel.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("/css/owl.theme.default.min.css") }}">
+
     <link rel="stylesheet" href="{{asset('css/jquery.fancybox.min.css')}}" media="screen">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -50,9 +50,8 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-2 col-form-label text-md-right">Пошта</label>
 
-                                <div class="col-md-10">
+                                <div class="col-md-12">
                                     <input id="email" placeholder="Пошта" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
@@ -64,10 +63,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-2 col-form-label text-md-right">Пароль</label>
 
-                                <div class="col-md-10">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                <div class="col-md-12">
+                                    <input id="password" placeholder="Пароль" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -114,14 +113,13 @@
                 </div>
                 <div class="modal-body float-left">
                     <div class="container-fluid">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" id="rg" action="{{ route('register') }}">
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-2 col-form-label text-md-right">Ім'я</label>
 
-                                <div class="col-md-10">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <div class="col-md-12">
+                                    <input id="name" placeholder="Ім'я" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -132,10 +130,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-2 col-form-label text-md-right">Пошта</label>
 
-                                <div class="col-md-10">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                <div class="col-md-12">
+                                    <input id="email" placeholder="Пошта" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -146,10 +144,9 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-2 col-form-label text-md-right">Пароль</label>
 
                                 <div class="col-md-10">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input id="password" placeholder="Пароль" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -160,10 +157,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password-confirm" class="col-md-2 col-form-label text-md-right">Повторення паролю</label>
+
 
                                 <div class="col-md-10">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input id="password-confirm" placeholder="Повторення паролю" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
                         </form>
@@ -171,7 +168,7 @@
                 </div>
                 <div class="modal-footer" style="display: block">
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" onclick="$('#rg').submit();" class="btn btn-primary">
                             Зареєструватись
                         </button>
                     </div>
@@ -181,12 +178,18 @@
     </div>
 @endguest
 
+    <body class="@yield('body-style')">
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="{{asset('images/loading.gif')}}" alt="#" /></div>
+    </div>
+    <!-- end loader -->
     @include('components.top-bar')
     @yield('body-content')
 
 
 
-
+    @include('components.footer')
     <!-- Javascript files-->
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>

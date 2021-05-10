@@ -2,9 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 
 class checkUserIsAdmin
 {
@@ -18,10 +19,9 @@ class checkUserIsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user() and !Auth::user()->is_admin()){
-            return redirect()->route('home');
+        if(Auth::user() && Auth::user()->is_admin == 1){
+            return $next($request);
         }
-        return $next($request);
-
+        return redirect()->back();
     }
 }
